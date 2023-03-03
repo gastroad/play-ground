@@ -5,16 +5,6 @@
 ### 실행 방법
 
 ```
-npm intall
-npm start
-```
-
-### 파일명 규칙
-
-[language] [main framework/library ] [test]
-
-```
-ex
-[Typescript] [React] [Redux]
-[TSReactRedux]
+npm intall 또는 yarn
+npm run dev 또는 yarn
 ```
