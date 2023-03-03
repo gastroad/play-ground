@@ -12,21 +12,6 @@
       "@src/*": [
         "./src/*"
       ],
-      "@components/*": [
-        "./src/components/*"
-      ],
-      "@container/*": [
-        "./src/container/*"
-      ],
-      "@hook/*": [
-        "./src/hook/*"
-      ],
-      "@slice/*": [
-        "./src/slice/*"
-      ],
-      "@utils/*": [
-        "./src/utils/*"
-      ],
       "@assets/*": [
         "./src/assets/*"
       ],
