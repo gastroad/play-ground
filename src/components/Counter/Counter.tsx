@@ -1,19 +1,18 @@
-import { FC, useState } from "react"
+import { FC } from "react"
 import { useSelector } from "react-redux"
 import { useAppDispatch, RootState } from "@src/store"
-import { increment, decrement } from "@src/store/counter"
+import { actionTypes } from "@src/store/counter"
 
 const Counter: FC = () => {
-    const selector = useSelector((state: RootState) => state.counter)
-    const { value } = selector
-    const [count, setCount] = useState<number>(0)
+    const { value } = useSelector((state: RootState) => state.counter)
     const dispatch = useAppDispatch()
 
     const onIncrease = () => {
-        dispatch(increment())
+        dispatch({ type: actionTypes.INCREMENT, payload: 2 })
     }
+
     const onDecrease = () => {
-        dispatch(decrement())
+        // dispatch(decrement())
     }
 
     return (
@@ -31,4 +30,7 @@ const Counter: FC = () => {
     )
 }
 
+
 export default Counter
+
+

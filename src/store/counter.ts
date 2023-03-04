@@ -1,4 +1,6 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, createAction, createReducer } from '@reduxjs/toolkit'
+
+import { ReduxAction } from "@src/types/redux"
 
 interface CounterState {
     value: number
@@ -8,19 +10,24 @@ const initialState: CounterState = {
     value: 0,
 }
 
-export const counterSlice = createSlice({
-    name: 'counter',
-    initialState,
-    reducers: {
-        increment: (state) => {
-            state.value += 1
-        },
-        decrement: (state) => {
-            state.value -= 1
-        },
+const actionTypes = {
+    INCREMENT: "COUNTER/INCREMENT",
+};
+const action = {
+    incrementValue: createAction<number>(actionTypes.INCREMENT),
+};
+
+const reducer = {
+    increment: (state: CounterState, action: ReduxAction<CounterState["value"]>) => {
+        state.value += action.payload
     },
-})
+};
 
-export const { increment, decrement } = counterSlice.actions
+const counterReducer = createReducer(initialState, (builder) => {
+    builder.addCase(action.incrementValue, reducer.increment);
+});
 
-export default counterSlice.reducer
+
+export { CounterState, initialState, actionTypes, action, reducer }
+
+export default counterReducer
