@@ -9,11 +9,10 @@ const dateData = (length?: number) => {
     })
 }
 
-const getDate = async (): Promise<string[]> => {
-    return new Promise(resolve => {
-        setTimeout(() => { resolve(dateData(50)) }, 1000)
-    })
-}
+const getDate = async (): Promise<string[]> => new Promise(resolve => {
+    setTimeout(() => { resolve(dateData(50)) }, 1000)
+})
+
 
 
 
