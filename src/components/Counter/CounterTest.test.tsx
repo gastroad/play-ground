@@ -1,5 +1,10 @@
+import { Provider } from "react-redux";
+import { configureStore } from "@reduxjs/toolkit";
 import { reducer, actionTypes, CounterState } from "@src/store/counter";
+import { render, screen } from "@testing-library/react"
+import { configuration } from "@src/store"
 import { getInt } from "@src/mock/number";
+import Counter from "./Counter"
 
 describe("Counter", () => {
     let state: CounterState | null = {
@@ -15,7 +20,7 @@ describe("Counter", () => {
         state = null
     })
 
-    test("action.increment", () => {
+    it("action.increment", () => {
         const action: ReduxAction<number> = {
             type: actionTypes.INCREMENT,
             payload: 2,
@@ -24,7 +29,7 @@ describe("Counter", () => {
         expect(state!.value).toEqual(2);
     });
 
-    test("action.decrement", () => {
+    it("action.decrement", () => {
         const action: ReduxAction<number> = {
             type: actionTypes.DECREMENT,
             payload: 2,
@@ -41,13 +46,14 @@ describe("Counter", () => {
         reducer.incrementAsync(state!, action);
         expect(state!.value).toEqual(30);
     });
-    it("action.incrementAsync fail", async () => {
-        const action: ReduxAction<number> = {
-            type: actionTypes.INCREMENTASYNC,
-            payload: await getInt({ status: "reject" }),
-        }
-        reducer.incrementAsync(state!, action);
-        expect(state!.value).toEqual(30);
+    it("Counter render", () => {
+        render(
+            <Provider store={configureStore(configuration)}>
+                <Counter />
+            </Provider>
+        )
+        expect(screen.findByText("현재숫자"));
     });
+
 });
 

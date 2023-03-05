@@ -6,7 +6,7 @@ const getInt = async (params: mockDataParams): Promise<number> => new Promise((r
     setTimeout(() => {
         switch (params.status) {
             case "resolve": resolve(30)
-            case "reject": reject()
+            case "reject": reject(0)
             default: resolve(30)
         }
     }, 1000)

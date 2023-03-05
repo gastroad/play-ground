@@ -2,10 +2,12 @@ import { useDispatch } from 'react-redux'
 import { configureStore } from '@reduxjs/toolkit'
 import counter from "./counter"
 
-
-const store = configureStore({
+export const configuration = {
     reducer: { counter }
-})
+}
+
+
+const store = configureStore(configuration)
 export default store
 
 
