@@ -12,19 +12,26 @@ const initialState: CounterState = {
 
 const actionTypes = {
     INCREMENT: "COUNTER/INCREMENT",
+    DECREMENT: "COUNTER/DECREMENT",
 };
 const action = {
     incrementValue: createAction<number>(actionTypes.INCREMENT),
+    decrementValue: createAction<number>(actionTypes.DECREMENT),
 };
 
 const reducer = {
     increment: (state: CounterState, action: ReduxAction<CounterState["value"]>) => {
         state.value += action.payload
     },
+    decrement: (state: CounterState, action: ReduxAction<CounterState["value"]>) => {
+        state.value -= action.payload
+    },
+
 };
 
 const counterReducer = createReducer(initialState, (builder) => {
     builder.addCase(action.incrementValue, reducer.increment);
+    builder.addCase(action.decrementValue, reducer.decrement);
 });
 
 
