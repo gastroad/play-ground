@@ -1,5 +1,6 @@
 import { reducer, actionTypes, CounterState } from "@src/store/counter";
 import { ReduxAction } from "@src/types/redux";
+import { getInt } from "@src/mock/number";
 
 describe("Counter", () => {
     let state: CounterState | null = {
@@ -33,4 +34,21 @@ describe("Counter", () => {
         expect(state!.value).toEqual(-2);
     });
 
+    it("action.incrementAsync suc", async () => {
+        const action: ReduxAction<number> = {
+            type: actionTypes.INCREMENTASYNC,
+            payload: await getInt({ status: "resolve" }),
+        }
+        reducer.incrementAsync(state!, action);
+        expect(state!.value).toEqual(30);
+    });
+    it("action.incrementAsync fail", async () => {
+        const action: ReduxAction<number> = {
+            type: actionTypes.INCREMENTASYNC,
+            payload: await getInt({ status: "reject" }),
+        }
+        reducer.incrementAsync(state!, action);
+        expect(state!.value).toEqual(30);
+    });
 });
+
