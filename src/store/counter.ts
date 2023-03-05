@@ -1,8 +1,6 @@
 import { createAction, createReducer, createAsyncThunk } from '@reduxjs/toolkit'
 import { getInt } from "@src/mock/number"
 
-import { ReduxAction } from "@src/types/redux"
-
 interface CounterState {
     value: number
 }

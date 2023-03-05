@@ -1,5 +1,4 @@
 import { reducer, actionTypes, CounterState } from "@src/store/counter";
-import { ReduxAction } from "@src/types/redux";
 import { getInt } from "@src/mock/number";
 
 describe("Counter", () => {
