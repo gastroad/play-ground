@@ -1,10 +1,14 @@
 import { Provider } from "react-redux";
 import { configureStore } from "@reduxjs/toolkit";
+import { render, screen, } from "@testing-library/react"
+import '@testing-library/jest-dom'
+
 import { reducer, actionTypes, CounterState } from "@src/store/counter";
-import { render, screen } from "@testing-library/react"
 import { configuration } from "@src/store"
 import { getInt } from "@src/mock/number";
+
 import Counter from "./Counter"
+
 
 describe("Counter", () => {
     let state: CounterState | null = {
@@ -52,7 +56,8 @@ describe("Counter", () => {
                 <Counter />
             </Provider>
         )
-        expect(screen.findByText("현재숫자"));
+        expect(screen.getByText(/비동기/)).toBeInTheDocument();
+
     });
 
 });
