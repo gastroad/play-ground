@@ -2,7 +2,7 @@
   "compilerOptions": {
     "target": "es5",
     "module": "commonjs",
-    "declaration": true,
+    // "declaration": true,
     "jsx": "react-jsx",
     "sourceMap": true,
     "strict": true,
