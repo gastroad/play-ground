@@ -8,7 +8,7 @@ module.exports = {
   "addons": [
     "@storybook/addon-links",
     "@storybook/addon-essentials",
-    "@storybook/addon-interactions"
+    "@storybook/addon-interactions",
   ],
   "framework": "@storybook/react",
   "core": {
@@ -17,5 +17,8 @@ module.exports = {
   "webpackFinal": async config => {
     config.resolve.alias = { ...config.resolve.alias, "@src": path.resolve(__dirname, "../src") }
     return config;
-  }
+  },
+  "features": {
+    "interactionsDebugger": true,
+  },
 }
