@@ -38,8 +38,6 @@ const Mockstore = ({ state, children }: MockStoreProps) => {
 export default {
     component: Counter,
     title: 'Counter',
-    decorators: [(story) => <div style={{ padding: "3rem" }}>{story()}</div>],
-    excludeStories: /.*MockedState$/,
 } as Meta;
 
 const Template: Story = () => <Counter />;
