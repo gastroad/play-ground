@@ -4,7 +4,18 @@
 
 ### 실행 방법
 
-```
-npm intall 또는 yarn
-npm run dev 또는 yarn
-```
+> test-ground
+>
+> ```
+> cd test-ground
+> npm intall 또는 yarn
+> npm run dev 또는 yarn
+> ```
+
+> nextjs-ground
+>
+> ```
+> cd nextjs-ground
+> npm intall 또는 yarn
+> npm run dev 또는 yarn
+> ```

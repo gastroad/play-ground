@@ -5,11 +5,13 @@ import { Provider } from "react-redux";
 import App from "./App"
 import store from "./store"
 
+
 import "core-js";
 import "regenerator-runtime/runtime";
 
 import "@assets/css/reset.scss"
 import "@assets/css/layout.scss"
+
 
 createRoot(
     document.getElementById("root") as HTMLElement

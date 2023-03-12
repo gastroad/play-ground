@@ -2,6 +2,7 @@ import { FC } from "react"
 import Counter from "@src/components/Counter"
 import Hello from "@src/components/Hello"
 
+
 const App: FC = () => {
     return (
         <>
@@ -16,7 +17,8 @@ const App: FC = () => {
             <footer>
 
             </footer>
-        </>)
+        </>
+    )
 }
 
 export default App
