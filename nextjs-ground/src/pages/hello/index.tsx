@@ -2,8 +2,7 @@ import { FC } from "react"
 import Link from 'next/link'
 import { useRouter } from "next/router"
 
-const HomePage = (temp) => {
-    console.log(temp)
+const HomePage: FC = () => {
     const router = useRouter()
 
     return (

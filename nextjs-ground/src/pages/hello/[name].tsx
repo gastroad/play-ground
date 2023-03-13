@@ -1,5 +1,4 @@
 import { FC } from "react"
-import Link from 'next/link'
 import { useRouter } from "next/router"
 
 const HomePage: FC = () => {
@@ -8,7 +7,7 @@ const HomePage: FC = () => {
     return (
         <>
             <div>{router.pathname}</div>
-            <div>[name]</div>
+            <div>[{name}]</div>
         </>
     )
 }
