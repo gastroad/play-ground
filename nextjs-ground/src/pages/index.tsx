@@ -5,7 +5,6 @@ const HomePage: FC = () => {
     return (
         <>
             <div>Welcome to Next.js!</div>
-            <Link href={"todo"}>TODO</Link >
         </>
     )
 }

@@ -8,7 +8,6 @@ const HomePage: FC = () => {
     return (
         <>
             <div>{router.pathname}</div>
-            <Link href={"todo"}>TODO</Link >
         </>
     )
 }
