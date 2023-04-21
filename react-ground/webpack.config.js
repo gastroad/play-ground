@@ -61,6 +61,11 @@ module.exports = {
         compress: true,
         server: 'http',
         historyApiFallback: true,
+        proxy: {
+            '/api': {
+                target: 'http://localhost:3000',
+            },
+        },
     },
     plugins: [
         new CaseSensitivePathsPlugin(),
