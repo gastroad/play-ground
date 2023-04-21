@@ -1,0 +1,29 @@
+{
+    "compilerOptions": {
+        "target": "es5",
+        "module": "commonjs",
+        "jsx": "react-jsx",
+        "sourceMap": true,
+        "strict": true,
+        "esModuleInterop": true,
+        "skipLibCheck": true,
+        "forceConsistentCasingInFileNames": true,
+        "paths": {
+            "src/*": [
+                "./src/*"
+            ],
+            "components/*": [
+                "./src/components/*"
+            ],
+            "page/*": [
+                "./src/page/*"
+            ],
+            "api/*": [
+                "./src/api/*"
+            ],
+            "assets/*": [
+                "./src/assets/*"
+            ],
+        },
+    }
+}
