@@ -4,6 +4,13 @@ const portfolioController = require("./portfolio.controller");
 const router = express.Router();
 
 router.get("/", portfolioController.getAll);
-router.get("/:id", portfolioController.getById);
+router.post("/", portfolioController.post);
 
-module.exports = router;
+router.get("/:id", portfolioController.getById);
+router.put("/:id", portfolioController.putById);
+
+router.post("/:id/etc", portfolioController.postEtc);
+router.put("/:id/etc/:etcId", portfolioController.putEtcById);
+
+
+module.exports = router
