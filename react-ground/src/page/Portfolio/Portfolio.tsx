@@ -1,28 +1,23 @@
-import { useEffect, FC } from 'react'
-import { useSelector } from 'react-redux'
-
-import { RootState, useAppDispatch } from "src/store/store"
-import { fetchPortfolioList } from "api/request"
-import LoadingSpinner from "components/LoadingSpinner/LoadingSpinner"
+import { FC } from 'react'
+import { useQuery, } from "@tanstack/react-query"
+import { getPortfolioList } from "api/request"
 
 import PortfolioList from "./PortfolioList"
 
 
 const Portfolio: FC = () => {
-    let portfolio = useSelector((state: RootState) => state.portfolio)
-    const { portfolioList, status } = portfolio
-    const dispatch = useAppDispatch()
+    const { status, data, error } = useQuery({ queryKey: ['portfolioList'], queryFn: getPortfolioList })
 
-    useEffect(() => {
-        dispatch(fetchPortfolioList())
-    }, [])
-
+    if (status == "error") {
+        console.log(error)
+        return <>에러 발생</>
+    }
+    if (status == "loading") {
+        return <> 로딩중 </>
+    }
     return (
         <>
-            {status === "PENDDING" && <LoadingSpinner />}
-            <section>
-                <PortfolioList portfolioList={portfolioList} />
-            </section>
+            <PortfolioList portfolioList={data} />
         </>
     )
 }

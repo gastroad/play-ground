@@ -4,3 +4,4 @@ declare interface PortfolioCard {
     paragraph: string
     link: string
 }
+
