@@ -1,4 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
+
 import axios from 'axios';
 
 const fetchPortfolioList = createAsyncThunk(
@@ -12,6 +14,29 @@ const getPortfolioList = async (): Promise<PortfolioCard[]> => {
     const { data } = await axios.get("/api/portfolio")
     return data
 }
+
+export const portfolioApi = createApi({
+    reducerPath: 'portfolioApi',
+    baseQuery: fetchBaseQuery({ baseUrl: '/api' }),
+    endpoints: (builder) => ({
+        getPortfolioList: builder.query<PortfolioCard[], void>({
+            query: () => '/portfolio',
+        }),
+        postPortfolio: builder.mutation({
+            query: (post) => ({
+                url: `/portfolio/`,
+                method: 'POST',
+                body: post
+            })
+        })
+    }),
+
+});
+
+export const { useGetPortfolioListQuery, usePostPortfolioMutation } = portfolioApi;
+
+
+
 const postPortfolio = async (body: PortfolioCard): Promise<PortfolioCard[]> => {
     const { data } = await axios.post("/api/portfolio", {
         ...body

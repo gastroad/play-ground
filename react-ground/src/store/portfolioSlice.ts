@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { fetchPortfolioList } from "api/request"
+import { fetchPortfolioList, } from "api/request"
 
 export const portfolioSlice = createSlice({
     name: 'portfolio',
@@ -8,6 +8,8 @@ export const portfolioSlice = createSlice({
         status: "PENDDING"
     },
     reducers: {},
+
+
     extraReducers: (builder) => {
         builder.addCase(fetchPortfolioList.fulfilled, (state, action) => {
             state.portfolioList = action.payload

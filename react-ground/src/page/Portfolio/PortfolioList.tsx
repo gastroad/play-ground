@@ -1,7 +1,7 @@
 import { FC } from "react"
 import PortfolioCard from "./PortfolioCard"
 import { useMutation, useQueryClient } from "@tanstack/react-query"
-import { postPortfolio } from "api/request"
+import { postPortfolio, usePostPortfolioMutation } from "api/request"
 
 const mockData = {
     etc: [{ id: 1, value: "1" }, { id: 2, value: "2" }, { id: 3, value: "3" }],
@@ -19,13 +19,13 @@ const PortfolioList: FC<Props> = (props) => {
     const { portfolioList } = props
     const queryClient = useQueryClient()
 
+    const [createPortfolio, { isLoading, isError, }] = usePostPortfolioMutation()
     const { mutate } = useMutation({
         mutationFn: postPortfolio,
         onSuccess: () => {
             queryClient.invalidateQueries({ queryKey: ['portfolioList'] })
         },
     })
-
 
     return (
         <article className="portfolio-wrapper">
@@ -37,6 +37,9 @@ const PortfolioList: FC<Props> = (props) => {
             <button onClick={() => {
                 mutate(mockData)
             }}>추가</button>
+            <button onClick={() => {
+                createPortfolio(mockData)
+            }}>추추가</button>
         </article>
     )
 }
