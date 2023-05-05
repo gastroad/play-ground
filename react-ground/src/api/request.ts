@@ -10,7 +10,11 @@ const fetchPortfolioList = createAsyncThunk(
     },
 );
 
-const getPortfolioList = async (): Promise<PortfolioCard[]> => {
+interface PortfolioList {
+    portfolio: PortfolioCard[]
+}
+
+const getPortfolioList = async (): Promise<PortfolioList> => {
     const { data } = await axios.get("/api/portfolio")
     return data
 }
@@ -19,7 +23,7 @@ export const portfolioApi = createApi({
     reducerPath: 'portfolioApi',
     baseQuery: fetchBaseQuery({ baseUrl: '/api' }),
     endpoints: (builder) => ({
-        getPortfolioList: builder.query<PortfolioCard[], void>({
+        getPortfolioList: builder.query<PortfolioList, void>({
             query: () => '/portfolio',
         }),
         postPortfolio: builder.mutation({

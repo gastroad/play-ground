@@ -1,7 +1,7 @@
 import { FC } from "react"
 import PortfolioCard from "./PortfolioCard"
-import { useMutation, useQueryClient } from "@tanstack/react-query"
-import { postPortfolio, usePostPortfolioMutation } from "api/request"
+import { useMutation, useQueryClient, useQuery } from "@tanstack/react-query"
+import { postPortfolio, usePostPortfolioMutation, getPortfolioList, useGetPortfolioListQuery, } from "api/request"
 
 const mockData = {
     etc: [{ id: 1, value: "1" }, { id: 2, value: "2" }, { id: 3, value: "3" }],
@@ -18,6 +18,10 @@ interface Props {
 const PortfolioList: FC<Props> = (props) => {
     const { portfolioList } = props
     const queryClient = useQueryClient()
+
+    const reactQuery = useQuery({ queryKey: ['portfolioList'], queryFn: getPortfolioList })
+    const rtkQuery = useGetPortfolioListQuery();
+
 
     const [createPortfolio, { isLoading, isError, }] = usePostPortfolioMutation()
     const { mutate } = useMutation({

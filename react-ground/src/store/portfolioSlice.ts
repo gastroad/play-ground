@@ -8,11 +8,9 @@ export const portfolioSlice = createSlice({
         status: "PENDDING"
     },
     reducers: {},
-
-
     extraReducers: (builder) => {
         builder.addCase(fetchPortfolioList.fulfilled, (state, action) => {
-            state.portfolioList = action.payload
+            state.portfolioList = action.payload.portfolio
             state.status = "FULFILLED"
         })
         builder.addCase(fetchPortfolioList.pending, (state) => {
