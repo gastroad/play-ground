@@ -15,6 +15,7 @@ const initialState: PortfolioState = {
     status: "PENDING"
 }
 
+
 export const portfolioSlice = createSlice({
     name: 'portfolio',
     initialState,
