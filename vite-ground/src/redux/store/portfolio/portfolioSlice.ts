@@ -3,8 +3,6 @@ import { fetchPortfolioList } from "./api"
 
 import type { Portfolio } from '../../../types/Portfolio'
 
-
-
 export interface PortfolioState {
     portfolioList: Portfolio[]
     status: "PENDING" | "FULFILLED" | "REJECTED"
