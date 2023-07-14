@@ -1,23 +1,28 @@
-import { snapshot_UNSTABLE } from 'recoil';
+import { snapshot_UNSTABLE } from "recoil";
 import { fetchPortfolioList } from "../portfolio/selectors";
-// import { getPortfolioList } from '../../api/portfolio';
-import { Portfolio } from '../../types/Portfolio';
+import axios from "axios";
 
-describe('fetchPortfolioList', () => {
-    const initialSnapshot = snapshot_UNSTABLE();
-    const release = initialSnapshot.retain();
-    const mockData: Portfolio[] = [
-        {
-            img: "",
-            title: "",
-            paragraph: "",
-            link: "",
+jest.mock("axios");
+
+describe('recoil portfolio', () => {
+    test('selector', async () => {
+        const mockData = {
+            portfolio: []
+        };
+        axios.get = jest.fn().mockResolvedValue({ data: mockData });
+        const mockAPI = {
+            get: axios.get
+        };
+        const initialSnapshot = snapshot_UNSTABLE();
+        const release = initialSnapshot.retain();
+        try {
+            jest.mock("../../api/portfolio", () => mockAPI);
+            await initialSnapshot.getPromise(fetchPortfolioList);
+            const loadable = initialSnapshot.getLoadable(fetchPortfolioList);
+            expect(loadable.state).toBe('hasValue');
+            expect(loadable.contents).toEqual([]);
+        } finally {
+            release();
         }
-    ]
-    try {
-        expect(initialSnapshot.getLoadable(fetchPortfolioList).valueOrThrow()).toBe(mockData);
-    } finally {
-        release();
-    }
-
+    });
 });

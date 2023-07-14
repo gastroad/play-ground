@@ -1,10 +1,10 @@
-import API from "."
-import type { Portfolio } from "../types/Portfolio"
-
+// import API from "./index";
+import type { Portfolio } from "../types/Portfolio";
+import axios from "axios";
 
 const getPortfolioList = async (): Promise<Portfolio[]> => {
-    const { data } = await API.get("/portfolio")
-    return data.portfolio
-}
+    const { data } = await axios.get("/api/portfolio");
+    return data.portfolio;
+};
 
-export { getPortfolioList }
+export { getPortfolioList };
